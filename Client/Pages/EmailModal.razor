@@ -1,0 +1,74 @@
+@inject HttpClient HttpClient
+@using Portfolio.Shared;
+@* @using Portfolio.Client; *@
+@using System.Net.Mail;
+@inject IConfiguration Configuration
+
+@if (IsEmailModalOpen)
+{
+    <div class="emailModal-background">
+        <div class="emailModal-content">
+            <span @onclick="CloseModal" class="emailModal-close">&times;</span>
+            <EditForm Model="@emailModel" OnValidSubmit="@SendThisMail">
+               
+
+                <div class="emailModal-form-group">
+                    <label class="emailModal-form-label" for="subject">Subject:</label>
+                    <InputText class="emailModal-form-input" @bind-Value="@emailModel.Subject" />
+                </div>
+
+                <div class="emailModal-form-group">
+                    <label class="emailModal-form-label" for="body">Message:</label>
+                    <InputTextArea class="emailModal-form-input" @bind-Value="@emailModel.Body" />
+                </div>
+
+                <button class="emailModal-send-email" type="submit">Send Email</button>
+            </EditForm>
+        </div>
+    </div>
+}
+@* <InputText class="emailModal-form-input" @bind-Value="@emailModel.To" /> *@
+<InputText class="emailModal-form-input" @bind-Value="@emailModel.Subject" />
+<InputTextArea class="emailModal-form-input" @bind-Value="@emailModel.Body" />
+
+@code {
+    [Parameter]
+    public bool IsEmailModalOpen { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnModalClose { get; set; }
+
+    private EmailObject emailModel = new EmailObject();
+
+    private IConfiguration _configuration;
+
+    private string Message { get; set; } = "";
+
+    private async Task SendThisMail()
+    {
+        try
+        {
+            // Make a POST request to the server's Send endpoint
+            var response = await HttpClient.PostAsJsonAsync("api/email/Send", emailModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Message = "Email sent successfully";
+                // You might want to close the modal here or clear the form
+            }
+            else
+            {
+                Message = "Failed to send email";
+            }
+        }
+        catch (Exception ex)
+        {
+            Message = $"Error: {ex.Message}";
+        }
+    }
+
+    private void CloseModal()
+    {
+        OnModalClose.InvokeAsync(false);
+    }
+}

@@ -1,0 +1,660 @@
+﻿/* This is the main stylesheet. the rest correspond with the pages */
+
+
+html {
+    scroll-behavior: auto;
+
+}
+
+/*-------------------------------------General (*) CSS BELOW--------------------------------------*/
+body {
+    font-family: 'Poppins';
+    background-color: var(--background-color);
+
+}
+
+main {
+    font-family: 'Poppins';
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+
+}
+
+/*  CODE TO CENTER THE IMAGE - LSN */
+p {
+    line-height: 1.5;
+    font-family: 'Poppins';
+    color: var(--text-color);
+}
+
+/*-------------------------------------Keyframes and Advanced CSS Below---------------------------*/
+
+
+@keyframes slideInAnimation {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.word-carousel {
+    /* Add transition for smooth changing of words */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    display: inline-block;
+    /* Keep it inline with the surrounding text */
+    margin-left: 40%;
+}
+
+/* Add a fade-in effect */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* Add a fade-out effect */
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/*--------------------------------------------CLASSES BELOW--------------------------------------------------------*/
+
+.center-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Aligns children at the start of the container */
+    align-items: center;
+    /* Centers children horizontally */
+    min-height: 100vh;
+    padding-top: 10vh;
+    /* Adjust this value to move content down */
+}
+
+.HeaderImage,
+.lsn-header {
+    align-self: flex-start;
+    /* Override the horizontal centering for these elements */
+}
+
+
+
+.HeaderImage {
+    text-align: center;
+    /*transform: translateX(-100%);*/
+    /* Start off the screen to the left */
+    /*animation: slideInAnimation 3s forwards normal;*/
+}
+
+.HeaderImage img {
+    width: 250px;
+    height: 325px;
+    border-radius: 50%;
+    /* Makes the image rounded */
+    border: 2px solid #C68866;
+    /* Optional: adds a border */
+}
+
+
+.lsn-header {
+    /*transform: translateX(-100%);*/
+    /* Start off the screen to the left */
+    /*animation: slideInAnimation 3s forwards normal;*/
+    top: inherit;
+}
+
+.lsn-header {
+    font-size: 50px;
+    font-family: 'Poppins';
+    text-align: center;
+    margin-right: 0;
+    background-size: 23%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.summary-lsn {
+    font-size: 40px;
+}
+
+.body-lsn {
+    font-size: 32px;
+}
+
+
+.container img {
+    width: 300px;
+    height: 300px;
+}
+
+.side-by-side-tables {
+    display: flex;
+    font-size: 27px;
+    justify-content: space-between;
+}
+
+.side-by-side-tables table {
+    width: 49%;
+    box-sizing: border-box;
+}
+
+.my-history {
+    font-size: 30px;
+}
+
+.my-projects {
+    font-size: 30px;
+}
+
+
+
+.JobLinks {
+    display: block;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 30%;
+    /* Adjust this to move the tab up or down */
+    right: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-image: linear-gradient(180deg, rgb(200, 100, 0) 0%, #b59c3a 90%);
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.JobLinks a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.JobLinks:hover {
+    background-color: #555;
+
+}
+
+.JobLinks2 {
+    display: block;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 50%;
+    /* Adjust this to move the tab up or down */
+    right: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-image: linear-gradient(180deg, rgb(200, 100, 0) 0%, #b59c3a 90%);
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.JobLinks2 a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.JobLinks2:hover {
+    background-color: #555
+}
+
+
+/*----*/
+@keyframes slideInRight {
+    from {
+        right: -100px;
+        /* Start off the screen to the right */
+        opacity: 0;
+    }
+
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+.JobLinks,
+.JobLinks2 {
+    animation: slideInRight 0.5s forwards;
+}
+
+.JobLinks a,
+.JobLinks2 a {
+    transition: transform 0.3s ease;
+}
+
+.JobLinks a:hover,
+.JobLinks2 a:hover {
+    transform: scale(1.1);
+    /* Enlarge the link */
+}
+
+.JobLinks a:not(:hover),
+.JobLinks2 a:not(:hover) {
+    transform: scale(1);
+    /* Return to original size */
+}
+
+/*-----*/
+
+
+
+.about-me {
+    font-size: 50px;
+    color-interpolation: linearRGB;
+}
+
+.my-sidebar-fonts {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 20px;
+    margin-top: -100px;
+}
+
+
+/*-----------------------------------Buttons---------------------------------------*/
+
+
+.my-sidebar-buttons-about {
+    width: 70px;
+    height: 70px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    transform: scale(1.1);
+    /*zoom effect*/
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background: url(../images/icons/character-icon.jpg);
+    background-size: cover;
+    background-position: center;
+
+}
+
+.my-sidebar-buttons-about:active {
+    background-color: darkblue;
+}
+
+.my-sidebar-buttons-about.clicked {
+    background-color: green;
+}
+
+.my-sidebar-buttons-knowledge {
+    width: 70px;
+    height: 70px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    transform: scale(1.1);
+    /*zoom effect*/
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background: url(../images/icons/book-icon.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.my-sidebar-buttons-knowledge:active {
+    background-color: darkblue;
+}
+
+.my-sidebar-buttons-knowledge.clicked {
+    background-color: green;
+}
+
+.my-sidebar-buttons-experience {
+    width: 70px;
+    height: 70px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    transform: scale(1.1);
+    /*zoom effect*/
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background: url(../images/icons/location-icon.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.my-sidebar-buttons-experience:active {
+    background-color: darkblue;
+}
+
+.my-sidebar-buttons-experience.clicked {
+    background-color: green;
+}
+
+.my-sidebar-buttons-projects {
+    width: 70px;
+    height: 70px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    transform: scale(1.1);
+    /*zoom effect*/
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background: url(../images/icons/filmcamera-icon.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.my-sidebar-buttons-projects:active {
+    background-color: darkblue;
+}
+
+.my-sidebar-buttons-projects.clicked {
+    background-color: green;
+}
+
+/* Buttons on index*/
+.button-effects {
+    display: block;
+    /* Display block to allow margin auto to work */
+    margin: 1rem auto;
+    /* Centers the button horizontally */
+    padding: 1rem 2rem;
+    /* Button padding */
+    border: none;
+    /* No border */
+    border-radius: 5px;
+    /* Rounded corners */
+    background-color: #E6C7AC;
+    color: white;
+    /* Text color */
+    font-size: 1rem;
+    /* Font size */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+    text-align: center;
+    /* Ensure text is centered */
+}
+
+/* Hover effect for buttons */
+.button-effects:hover {
+    background-color: #C68866;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Add shadow for depth */
+    transform: translateY(-2px);
+    /* Slightly raise the button */
+}
+
+/* Buttons with specific classes for JavaScript functionality
+.GoToKnowledge-Effects,
+.GoToExperience-Effects,
+.GoToProjects-Effects {
+    /* Additional styling if necessary, otherwise they inherit .button-effects */
+
+
+
+/*------------------------------------My Section IDs-----------------------------*/
+.about {
+    display: flex;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 60%;
+    /* Adjust this to move the tab up or down */
+    left: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-color: #333;
+    /* Any color you desire for the background */
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.about a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.about a:hover {
+    background-color: #555;
+    /* Change color on hover */
+}
+
+.knowledge {
+    display: block;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 20%;
+    /* Adjust this to move the tab up or down */
+    left: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-color: #333;
+    /* Any color you desire for the background */
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.knowledge a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.knowledge a:hover {
+    background-color: #555;
+    /* Change color on hover */
+}
+
+.experience {
+    display: block;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 30%;
+    /* Adjust this to move the tab up or down */
+    left: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-color: #333;
+    /* Any color you desire for the background */
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.experience a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.experience a:hover {
+    background-color: #555;
+    /* Change color on hover */
+}
+
+.projects {
+    display: block;
+    position: fixed;
+    /* Makes sure the tab is always visible, even on scroll */
+    bottom: 40%;
+    /* Adjust this to move the tab up or down */
+    left: 0;
+    /* This will position it on the right side. Use 'left: 0;' for the left side */
+    background-color: #333;
+    /* Any color you desire for the background */
+    padding: 10px 20px;
+    /* Space around the content */
+    border-top-left-radius: 8px;
+    /* Rounded corners on the top-left */
+    border-bottom-left-radius: 8px;
+    /* Rounded corners on the bottom-left */
+    z-index: 1000;
+    /* Makes sure the tab is above other elements */
+}
+
+.projects a {
+    color: white;
+    /* Color of the tab content */
+    text-decoration: none;
+    /* Removes underline from link */
+    display: block;
+    /* Makes each link occupy its own line */
+    padding: 5px 0;
+    /* Some vertical padding for spacing between links */
+}
+
+.project a:hover {
+    background-color: #555;
+    /* Change color on hover */
+}
+
+/*------------------------------------ICONS------------------------------*/
+.my-sidebar-icons {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    transform: scale(1.1);
+    /*zoom effect*/
+    border-radius: 50%;
+    /* Makes the image rounded */
+    border: 1px solid black;
+    /* Optional: adds a border */
+
+}
+
+
+
+
+
+
+
+.emailModal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+
+
+    .emailModal-content {
+        background-color: peru;
+        padding:5%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .emailModal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .emailModal-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .emailModal-form-label {
+        font-weight: bold;
+    }
+
+    .emailModal-form-input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+
+
+    .emailModal-close {
+        float: right;
+        font-size: 2rem; 
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+        padding: 1px;
+        line-height: 1; 
+        
+    }
+    
+}
+.emailModal-send-email{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+
+/*testing*/
+/* Day mode styles */
+:root.day-mode {
+    background-image: radial-gradient(ellipse 100% 65%, white 0%, #cea37d 60%, white 100%);
+}
+
+:root.night-mode {
+    background-image: radial-gradient(ellipse 100% 65%, rgb(31, 31, 31) 0%, #53575B 60%, white 100%);
+    --text-color: #cea37d;
+    /* Other night mode variables */
+}
+
+
+

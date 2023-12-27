@@ -1,0 +1,83 @@
+﻿@page "/knowledge"
+
+
+@***************************************Page 2*******************************************************@
+<section id="knowledge"></section>
+
+
+
+
+
+
+
+
+
+@*<div class="knowledge"><a href="#knowledge">Knowledge</a> </div>*@
+<div class="side-by-side-tables">
+    <!-- Technologies table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Technologies</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tech in Technologies)
+            {
+                <tr>
+                    <td>@tech.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Certifications table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Certifications</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cert in Certs)
+            {
+                <tr>
+                    <td>@cert.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@*section Skills is above*@
+
+@* --------------------------------------------------------------C#-------------------------------------------------------------- *@
+@code {
+
+    private List<Skills> Technologies = new List<Skills>
+    {
+        new Skills { Name = "Red Hat Enterprise Linux"},
+        new Skills { Name = "Ubuntu" },
+        new Skills {Name = "Microsoft Azure Functions"},
+        new Skills{Name= "Microsoft Azure App Services" },
+        new Skills{Name = "PowerShell" }
+    };
+
+    private List<Certifications> Certs = new List<Certifications>
+    {
+        new Certifications { Name = "Microsoft: Azure Developer Associate" },
+        new Certifications { Name = "Microsoft: Azure Fundamentals" },
+        new Certifications { Name = "CompTIA Advanced Security Practitioner" },
+        new Certifications { Name = "CompTIA Security+" },
+        new Certifications { Name = "CompTIA Linux+" },
+    };
+
+    private class Skills
+    {
+        public string Name { get; set; }
+    }
+
+    private class Certifications
+    {
+        public string Name { get; set; }
+    }
+}

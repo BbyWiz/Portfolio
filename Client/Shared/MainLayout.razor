@@ -1,0 +1,132 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@inject HttpClient HttpClient
+@using Portfolio.Client;
+@using Portfolio.Shared;
+@using System.Net.Mail;
+
+
+
+<div class="@GetModeClass() day-mode night-mode">
+	<div class="">
+		@* <div class="sidebar">
+		<NavMenu></NavMenu>
+		</div> *@
+
+		<main class="">
+			<div class="ab-m">
+				<title>Tab Menu Indicator</title>
+				<div class="navigation">
+					<ul>
+						<li class="list active">
+							<a href="#">
+								<span class="icon">
+									<ion-icon name="book-outline"></ion-icon>
+								</span>
+								<span class="text">Home</span>
+							</a>
+						</li>
+						<li class="list" @onclick="HandleResumeClick" @onclick:preventDefault>
+							<a href="#">
+								<span class="icon">
+									<ion-icon name="document-text-outline"></ion-icon>
+								</span>
+								<span class="text">Resume</span>
+							</a>
+						</li>
+						<li class="list" @onclick="ToggleEmailModal" >
+							<a href="#">
+								<span class="icon">
+									<ion-icon name="mail-outline"></ion-icon>
+								</span>
+								<span class="text ">Email</span>
+							</a>
+						</li>
+						<li class="list">
+							<a href="https://www.linkedin.com/in/larry-n" target="_blank">
+								<span class="icon">
+									<ion-icon name="logo-linkedin"></ion-icon>
+								</span>
+								<span class="text">LinkedIn</span>
+							</a>
+						</li>
+						<li class="list" @onclick="ToggleMode" @onclick:preventDefault>
+							<a href="">
+								<span class="icon">
+									<ion-icon name="contrast-outline"></ion-icon>
+								</span>
+								<span class="text">Day/Night</span>
+							</a>
+						</li>
+						<div class="indicator"></div>
+					</ul>
+				</div>
+			</div>
+			@Body
+		</main>
+	</div>
+</div>
+
+@* <EmailModal IsEmailModalOpen="@isEmailModalOpen" OnModalClose="value => isEmailModalOpen = value" /> *@
+
+@code {
+	#region Code that is actively used to
+	private bool isNightMode = false;
+	private bool isEmailModalOpen = false;
+
+
+	private async Task ToggleMode(MouseEventArgs e)
+	{
+		await JSRuntime.InvokeVoidAsync("toggleDayNightMode");
+	}
+
+	private string GetModeClass() => isNightMode ? "night-mode" : "day-mode"; //lamda expression
+
+	private void ToggleEmailModal()
+	{
+		isEmailModalOpen = !isEmailModalOpen;
+	}
+	private string resumeBlobUrl =
+	"https://lsnpersonalstorage.blob.core.windows.net/jobrelatedfiles/Lawrence%20Neris%20Software%20Engineer%20Resume.pdf?sp=r&st=2023-12-06T05:35:08Z&se=2024-12-06T13:35:08Z&spr=https&sv=2022-11-02&sr=b&sig=PpV0xNR8s7Y4VI%2BC%2BSwVd7PXYvowfPSEJm9vPJLRUmo%3D";
+
+	private async Task HandleResumeClick()
+	{
+		// Open the resume PDF in a new tab
+		await JSRuntime.InvokeVoidAsync("openInNewTab", resumeBlobUrl);
+	}
+	#endregion
+}
+
+@* testing email sending directly from ROM *@
+@* @code {
+	private string Message { get; set; } = "";
+
+	private void NewSendMail()
+	{
+		try
+		{
+			using (MailMessage mail = new MailMessage())
+			{
+				mail.From = new MailAddress("hollyisxcute@hotmail.com");
+				mail.To.Add("lawrence.neris2@outlook.com");
+				mail.Subject = "Sending Mail Testing (Blazor)";
+				mail.Body = "<h1>This is mail body</h1>";
+				mail.IsBodyHtml = true;
+
+				using (SmtpClient smtp = new SmtpClient("smtp.outlook.com", 587))
+				{
+					smtp.Credentials = new System.Net.NetworkCredential("hollyisxcute@hotmail.com", "music4life");
+					smtp.EnableSsl = true;
+					smtp.Send(mail);
+					Message = "Mail Sent";
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+			Message = ex.Message;
+		}
+	}
+} *@
+
+}

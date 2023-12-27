@@ -1,0 +1,120 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inherits LayoutComponentBase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*************************************Page 1*********************************************************@
+<section class="center-index">
+<section id="/">
+<header class="lsn-header">
+    Lawrence Neris
+</header>
+<section class="HeaderImage">
+    <img src="images/me_and_a_camel.jpg" alt="Larry Neris Portrait">
+</section>
+
+<section class="summary-lsn">
+    A software engineer with a passion for <br />
+    <span id="wordCarousel" class="word-carousel">learning.</span>
+</section>
+
+
+<div>
+            <button class="button-effects nav-button" @onclick="GoToAbout">about</button>
+            <button class="button-effects nav-button" @onclick="GoToKnowledge">knowledge</button>
+            <button class="button-effects nav-button" @onclick="GoToExperience">experience</button>
+            <button class="button-effects nav-button" @onclick="GoToProjects">projects</button>
+
+
+
+
+</div>
+@*         <div class="JobLinks">
+   <a href="https://linkedin.com/in/larry-n/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+</div>
+<div class="JobLinks2">
+<a href="https://github.com/mssa-2023-fall/Larry" target="_blank">GitHub</a>
+</div> *@
+</section>
+</section>
+@* --------------------------------------------------------------CODE---------------------------------------------------------------- *@
+
+@* --------------------------------------------------------------JavaScript-------------------------------------------------------------- *@
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("startWordCarousel");
+            //different method:
+            await JSRuntime.InvokeVoidAsync("eval", @"
+            const list = document.querySelectorAll('.list');
+            function activelink(){
+                list.forEach((item) =>
+                item.classList.remove('active'));
+                this.classList.add('active');
+                }
+                list.forEach((item) =>
+                item.addEventListener('click', activelink));
+                ");
+        }
+    }
+
+    /*
+    private async Task GoToKnowledge()
+    {
+        await JSRuntime.InvokeVoidAsync("navigateToKnowledge");
+    }
+
+    private async Task GoToExperience()
+    {
+        await JSRuntime.InvokeVoidAsync("navigateToExperience");
+    }
+
+    private async Task GoToProjects()
+    {
+        await JSRuntime.InvokeVoidAsync("navigateToProjects");
+    }
+
+    */
+    
+}
+
+   @* --------------------------------------------------------------C#-------------------------------------------------------------- *@
+   @code{
+    private void GoToKnowledge()
+    {
+        NavigationManager.NavigateTo("knowledge");
+    }
+
+    private void GoToExperience()
+    {
+        NavigationManager.NavigateTo("experience");
+    }
+
+    private void GoToProjects()
+    {
+        NavigationManager.NavigateTo("projects");
+    }
+    private void GoToAbout()
+    {
+        NavigationManager.NavigateTo("about");
+    }
+
+   }
