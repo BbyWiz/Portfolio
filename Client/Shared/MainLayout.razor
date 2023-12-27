@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JSRuntime
 @inject HttpClient HttpClient
-@using Portfolio.Client;
+@using Portfolio.Client.Pages;
 @using Portfolio.Shared;
 @using System.Net.Mail;
 
@@ -67,8 +67,8 @@
 	</div>
 </div>
 
-@* <EmailModal IsEmailModalOpen="@isEmailModalOpen" OnModalClose="value => isEmailModalOpen = value" /> *@
-
+<EmailModal IsEmailModalOpen="@isEmailModalOpen" OnModalClose="value => isEmailModalOpen = value" />
+@* <EmailModal IsEmailModalOpen="@isEmailModalOpen"></EmailModal> *@
 @code {
 	#region Code that is actively used to
 	private bool isNightMode = false;

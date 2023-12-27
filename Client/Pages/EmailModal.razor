@@ -1,8 +1,13 @@
 @inject HttpClient HttpClient
 @using Portfolio.Shared;
-@* @using Portfolio.Client; *@
+@using Portfolio.Client;
 @using System.Net.Mail;
 @inject IConfiguration Configuration
+
+
+
+
+
 
 @if (IsEmailModalOpen)
 {
@@ -10,7 +15,19 @@
         <div class="emailModal-content">
             <span @onclick="CloseModal" class="emailModal-close">&times;</span>
             <EditForm Model="@emailModel" OnValidSubmit="@SendThisMail">
-               
+            
+                @* From and To Lines if I ever want to add this feature: *@
+
+                @* <div class="emailModal-form-group">
+                    <label class="emailModal-form-label" for="from">From:</label>
+                    <InputText class="emailModal-form-input" @bind-Value="@emailModel.From" disabled />
+                </div>
+
+                <div class="emailModal-form-group">
+                    <label class="emailModal-form-label" for="to">To:</label>
+                    <InputText class="emailModal-form-input" @bind-Value="@emailModel.To" disabled />
+                </div> *@
+
 
                 <div class="emailModal-form-group">
                     <label class="emailModal-form-label" for="subject">Subject:</label>
@@ -27,7 +44,8 @@
         </div>
     </div>
 }
-@* <InputText class="emailModal-form-input" @bind-Value="@emailModel.To" /> *@
+}
+<InputText class="emailModal-form-input" @bind-Value="@emailModel.To" />
 <InputText class="emailModal-form-input" @bind-Value="@emailModel.Subject" />
 <InputTextArea class="emailModal-form-input" @bind-Value="@emailModel.Body" />
 
@@ -44,12 +62,17 @@
 
     private string Message { get; set; } = "";
 
+     protected override void OnInitialized()
+    {
+        emailModel.From = "lawrence.neris2@outlook.com";
+        emailModel.To = "lawrence.neris2@outlook.com";
+    }
     private async Task SendThisMail()
     {
         try
         {
             // Make a POST request to the server's Send endpoint
-            var response = await HttpClient.PostAsJsonAsync("api/email/Send", emailModel);
+            var response = await HttpClient.PostAsJsonAsync("api/Email/Send", emailModel);
 
             if (response.IsSuccessStatusCode)
             {
@@ -71,4 +94,4 @@
     {
         OnModalClose.InvokeAsync(false);
     }
-}
+} 
