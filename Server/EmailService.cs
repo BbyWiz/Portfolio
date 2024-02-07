@@ -32,6 +32,6 @@ namespace Portfolio.Server
 
             // other configurations
         }
-       
+
     }
 }

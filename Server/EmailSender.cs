@@ -28,7 +28,7 @@ namespace Portfolio.Server
                 subject,
                 message
                 ));
-            
+
         }
     }
 }
