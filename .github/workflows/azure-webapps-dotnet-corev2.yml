@@ -63,11 +63,11 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          auth-type: IDENTITY
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}          
+      # - name: Azure login
+      #   uses: azure/login@v1
+      #   with:
+      #     auth-type: IDENTITY
+      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}          
 
   
 
