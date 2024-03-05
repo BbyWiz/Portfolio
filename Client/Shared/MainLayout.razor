@@ -21,9 +21,49 @@
 						<li class="list active">
 							<a href="#">
 								<span class="icon">
-									<ion-icon name="book-outline"></ion-icon>
+									<ion-icon name="home-outline"></ion-icon>
 								</span>
 								<span class="text">Home</span>
+							</a>
+						</li>
+						<li class="list">
+							<a href="/about" target="_self">
+								<span class="icon">
+									<ion-icon name="person-outline"></ion-icon>
+								</span>
+								<span class="text">
+									About
+								</span>
+							</a>
+						</li>
+						<li class="list">
+							<a href="/knowledge" target="_self">
+								<span class="icon">
+									<ion-icon name="book-outline"></ion-icon>
+								</span>
+								<span class="text">
+									Knowledge
+								</span>
+							</a>
+						</li>
+						<li class="list">
+							<a href="/experience" target="_self">
+								<span class="icon">
+									<ion-icon name="construct-outline"></ion-icon>
+								</span>
+								<span class="text">
+									Experience
+								</span>
+							</a>
+						</li>
+						<li class="list">
+							<a href="/projects" target="_self">
+								<span class="icon">
+									<ion-icon name="easel-outline"></ion-icon>
+								</span>
+								<span class="text">
+									Projects
+								</span>
 							</a>
 						</li>
 						<li class="list" @onclick="HandleResumeClick" @onclick:preventDefault>
@@ -34,7 +74,7 @@
 								<span class="text">Resume</span>
 							</a>
 						</li>
-						<li class="list" @onclick="ToggleEmailModal" >
+						<li class="list" @onclick="ToggleEmailModal">
 							<a href="#">
 								<span class="icon">
 									<ion-icon name="mail-outline"></ion-icon>
@@ -58,6 +98,7 @@
 								<span class="text">Day/Night</span>
 							</a>
 						</li>
+
 						<div class="indicator"></div>
 					</ul>
 				</div>
@@ -99,34 +140,32 @@
 
 @* testing email sending directly from ROM *@
 @* @code {
-	private string Message { get; set; } = "";
+private string Message { get; set; } = "";
 
-	private void NewSendMail()
-	{
-		try
-		{
-			using (MailMessage mail = new MailMessage())
-			{
-				mail.From = new MailAddress("hollyisxcute@hotmail.com");
-				mail.To.Add("lawrence.neris2@outlook.com");
-				mail.Subject = "Sending Mail Testing (Blazor)";
-				mail.Body = "<h1>This is mail body</h1>";
-				mail.IsBodyHtml = true;
+private void NewSendMail()
+{
+try
+{
+using (MailMessage mail = new MailMessage())
+{
+mail.From = new MailAddress("hollyisxcute@hotmail.com");
+mail.To.Add("lawrence.neris2@outlook.com");
+mail.Subject = "Sending Mail Testing (Blazor)";
+mail.Body = "<h1>This is mail body</h1>";
+mail.IsBodyHtml = true;
 
-				using (SmtpClient smtp = new SmtpClient("smtp.outlook.com", 587))
-				{
-					smtp.Credentials = new System.Net.NetworkCredential("hollyisxcute@hotmail.com", "music4life");
-					smtp.EnableSsl = true;
-					smtp.Send(mail);
-					Message = "Mail Sent";
-				}
-			}
-		}
-		catch (Exception ex)
-		{
-			Message = ex.Message;
-		}
-	}
+using (SmtpClient smtp = new SmtpClient("smtp.outlook.com", 587))
+{
+smtp.Credentials = new System.Net.NetworkCredential("hollyisxcute@hotmail.com", "music4life");
+smtp.EnableSsl = true;
+smtp.Send(mail);
+Message = "Mail Sent";
+}
+}
+}
+catch (Exception ex)
+{
+Message = ex.Message;
+}
+}
 } *@
-
-
