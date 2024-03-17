@@ -7,14 +7,11 @@ html {
 }
 
 /*-------------------------------------General (*) CSS BELOW--------------------------------------*/
-body {
-    font-family: 'Poppins';
-    background-color: var(--background-color);
 
-}
 
 main {
     font-family: 'Poppins';
+    background-image:url("C:\Users\lol4l\source\repos\Portfolio\Client\wwwroot\images\DarkDesert.jpeg");
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
@@ -648,6 +645,7 @@ p {
 /* Day mode styles */
 :root.day-mode {
     background-image: radial-gradient(ellipse 100% 65%, white 0%, #cea37d 60%, white 100%);
+    --text-color: #cea37d;
 }
 
 :root.night-mode {

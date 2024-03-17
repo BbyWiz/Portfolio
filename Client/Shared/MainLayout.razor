@@ -36,7 +36,7 @@
 								</span>
 							</a>
 						</li>
-						<li class="list">
+						@* <li class="list">
 							<a href="/knowledge" target="_self">
 								<span class="icon">
 									<ion-icon name="book-outline"></ion-icon>
@@ -45,7 +45,7 @@
 									Knowledge
 								</span>
 							</a>
-						</li>
+						</li> *@
 						<li class="list">
 							<a href="/experience" target="_self">
 								<span class="icon">
@@ -90,14 +90,14 @@
 								<span class="text">LinkedIn</span>
 							</a>
 						</li>
-						<li class="list" @onclick="ToggleMode" @onclick:preventDefault>
+						@* <li class="list" @onclick="ToggleMode" @onclick:preventDefault>
 							<a href="">
 								<span class="icon">
 									<ion-icon name="contrast-outline"></ion-icon>
 								</span>
 								<span class="text">Day/Night</span>
 							</a>
-						</li>
+						</li> *@
 
 						<div class="indicator"></div>
 					</ul>
@@ -112,7 +112,7 @@
 @* <EmailModal IsEmailModalOpen="@isEmailModalOpen"></EmailModal> *@
 @code {
 	#region Code that is actively used to
-	private bool isNightMode = false;
+	private bool isNightMode = true;
 	private bool isEmailModalOpen = false;
 
 
