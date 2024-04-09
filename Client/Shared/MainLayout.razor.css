@@ -107,46 +107,39 @@
     flex-direction: column;
     margin-right: 100% !important;
     margin-bottom: 25% !important;
-    margin-top: 25% !important;
+    margin-top: 0% !important; /* Adjusted from 25% to 0% to move up */
     position: absolute !important;
-    top: 10px;
+    top: 0px; /* Adjust this value as needed */
     left: 10px;
     z-index: 50 !important;
-
+    padding-left: 1000px;
+    
 }
 
+
 .navigation {
-    margin: 0 auto;
-    position: relative;
-    background-color: #202020;
     display: flex;
     justify-content: center;
-    z-index: 1;
-    border-radius: 10px;
-    width: 100px;
-    height: 800px;
-    flex-direction: column;
-    left: 20px !important;
+    width: 100%; /* Full width to center align in the parent */
+    flex-direction: row; /* Aligns navigation items horizontally */
 }
 
 .navigation ul {
-    position: relative;
     display: flex;
-    width: 400px;
-    z-index: 1000;
-    z-index: 1000;
-    left: -20px !important;
-    flex-direction: column;
+    list-style-type: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Align items vertically in the middle */
+    gap: 20px; /* Optional: Adds space between list items */
 }
 
+
 .navigation ul li {
-    position: relative;
-    list-style: none;
-    width: 80px;
-    height: 80px;
-    z-index: 1;
-    width: 80px;
-    height: 80px;
+    position: relative; /* For positioning the indicator or other absolute elements */
+    display: flex; /* Display the content of li as flex to align icon and text */
+    justify-content: center; /* Center the content of li */
+    align-items: center; /* Center the content vertically */
 }
 
 .navigation ul li a {
@@ -186,7 +179,7 @@
     font-size: 0.6em;
     letter-spacing: 0.05em;
     transition: 0.5s;
-    color: #222327;
+    color: #fdba29;
     text-transform: uppercase;
     font-weight: 600;
     transform: translateY(0px);
@@ -198,16 +191,14 @@
 }
 
 .indicator {
-    position: absolute;
-    width: 80px;
-    height: 80px;
+    position:relative;
+    width: auto;
+    height: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.5s;
-    z-index: -1;
+    transition: 0.2s;
+    z-index: 0;
 }
 
 .indicator::before {

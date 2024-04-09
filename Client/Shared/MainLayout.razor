@@ -137,35 +137,3 @@
 	}
 	#endregion
 }
-
-@* testing email sending directly from ROM *@
-@* @code {
-private string Message { get; set; } = "";
-
-private void NewSendMail()
-{
-try
-{
-using (MailMessage mail = new MailMessage())
-{
-mail.From = new MailAddress("hollyisxcute@hotmail.com");
-mail.To.Add("lawrence.neris2@outlook.com");
-mail.Subject = "Sending Mail Testing (Blazor)";
-mail.Body = "<h1>This is mail body</h1>";
-mail.IsBodyHtml = true;
-
-using (SmtpClient smtp = new SmtpClient("smtp.outlook.com", 587))
-{
-smtp.Credentials = new System.Net.NetworkCredential("hollyisxcute@hotmail.com", "music4life");
-smtp.EnableSsl = true;
-smtp.Send(mail);
-Message = "Mail Sent";
-}
-}
-}
-catch (Exception ex)
-{
-Message = ex.Message;
-}
-}
-} *@
